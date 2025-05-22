@@ -1,10 +1,7 @@
 package com.gevernova.studentgradingsystem;
 
 import java.util.List;
-
-import java.util.List;
 import java.util.Objects;
-import java.util.UUID;
 
 public class Student {
     private final String name;

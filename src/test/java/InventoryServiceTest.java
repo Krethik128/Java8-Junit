@@ -110,77 +110,77 @@ class InventoryServiceTest {
     @Test
     @DisplayName("Should filter low stock items correctly")
     void shouldFilterLowStockItemsCorrectly() throws InvalidProductException {
-        Product p1 = new Product("Laptop", ProductCategory.Electronics, 3, 1200.00);
-        Product p2 = new Product("Bread", ProductCategory.Grocery, 8, 2.50);
-        Product p3 = new Product("Shirt", ProductCategory.Clothing, 2, 25.00);
+        Product productOne = new Product("Laptop", ProductCategory.Electronics, 3, 1200.00);
+        Product productTwo = new Product("Bread", ProductCategory.Grocery, 8, 2.50);
+        Product productThree = new Product("Shirt", ProductCategory.Clothing, 2, 25.00);
 
-        inventoryService.addNewProduct(p1);
-        inventoryService.addNewProduct(p2);
-        inventoryService.addNewProduct(p3);
+        inventoryService.addNewProduct(productOne);
+        inventoryService.addNewProduct(productTwo);
+        inventoryService.addNewProduct(productThree);
 
         List<Product> lowStock = inventoryService.filterLowStockItems(5);
         assertEquals(2, lowStock.size());
         // Verify by actual product objects or their generated IDs
-        assertTrue(lowStock.stream().anyMatch(p -> p.getId().equals(p1.getId())));
-        assertTrue(lowStock.stream().anyMatch(p -> p.getId().equals(p3.getId())));
+        assertTrue(lowStock.stream().anyMatch(p -> p.getId().equals(productOne.getId())));
+        assertTrue(lowStock.stream().anyMatch(p -> p.getId().equals(productThree.getId())));
     }
 
     @Test
     @DisplayName("Should sort products by category and price")
     void shouldSortProductsByCategoryAndPrice() throws InvalidProductException {
-        Product p1 = new Product("Novel", ProductCategory.Books, 5, 15.00);
-        Product p2 = new Product("Milk", ProductCategory.Grocery, 10, 3.00);
-        Product p3 = new Product("TV", ProductCategory.Electronics, 3, 800.00);
-        Product p4 = new Product("Butter", ProductCategory.Grocery, 7, 4.50);
-        Product p5 = new Product("Fantasy", ProductCategory.Books, 2, 12.00);
+        Product productOne = new Product("Novel", ProductCategory.Books, 5, 15.00);
+        Product productTwo = new Product("Milk", ProductCategory.Grocery, 10, 3.00);
+        Product productThree = new Product("TV", ProductCategory.Electronics, 3, 800.00);
+        Product productFour = new Product("Butter", ProductCategory.Grocery, 7, 4.50);
+        Product productFive = new Product("Fantasy", ProductCategory.Books, 2, 12.00);
 
-        inventoryService.addNewProduct(p1);
-        inventoryService.addNewProduct(p2);
-        inventoryService.addNewProduct(p3);
-        inventoryService.addNewProduct(p4);
-        inventoryService.addNewProduct(p5);
+        inventoryService.addNewProduct(productOne);
+        inventoryService.addNewProduct(productTwo);
+        inventoryService.addNewProduct(productThree);
+        inventoryService.addNewProduct(productFour);
+        inventoryService.addNewProduct(productFive);
 
         List<Product> sortedProducts = inventoryService.sortProductsByCategoryAndPrice();
 
         // Expected order based on ProductCategory enum's natural order (Electronics, Grocery, Books)
-        assertEquals(p3.getId(), sortedProducts.get(0).getId()); // TV (ELECTRONICS, 800.00)
-        assertEquals(p2.getId(), sortedProducts.get(1).getId()); // Milk (GROCERY, 3.00)
-        assertEquals(p4.getId(), sortedProducts.get(2).getId()); // Butter (GROCERY, 4.50)
-        assertEquals(p5.getId(), sortedProducts.get(3).getId()); // Fantasy (BOOKS, 12.00)
-        assertEquals(p1.getId(), sortedProducts.get(4).getId()); // Novel (BOOKS, 15.00)
+        assertEquals(productThree.getId(), sortedProducts.get(0).getId()); // TV (ELECTRONICS, 800.00)
+        assertEquals(productTwo.getId(), sortedProducts.get(1).getId()); // Milk (GROCERY, 3.00)
+        assertEquals(productFour.getId(), sortedProducts.get(2).getId()); // Butter (GROCERY, 4.50)
+        assertEquals(productFive.getId(), sortedProducts.get(3).getId()); // Fantasy (BOOKS, 12.00)
+        assertEquals(productOne.getId(), sortedProducts.get(4).getId()); // Novel (BOOKS, 15.00)
     }
 
     @Test
     @DisplayName("Should search products by name correctly")
     void shouldSearchProductsByNameCorrectly() throws InvalidProductException {
-        Product p1 = new Product("Laptop Pro", ProductCategory.Electronics, 5, 1500.00);
-        Product p2 = new Product("Gaming Laptop", ProductCategory.Electronics, 3, 1800.00);
-        Product p3 = new Product("Mouse", ProductCategory.Electronics, 15, 20.00);
+        Product productOne = new Product("Laptop Pro", ProductCategory.Electronics, 5, 1500.00);
+        Product productTwo = new Product("Gaming Laptop", ProductCategory.Electronics, 3, 1800.00);
+        Product productThree = new Product("Mouse", ProductCategory.Electronics, 15, 20.00);
 
-        inventoryService.addNewProduct(p1);
-        inventoryService.addNewProduct(p2);
-        inventoryService.addNewProduct(p3);
+        inventoryService.addNewProduct(productOne);
+        inventoryService.addNewProduct(productTwo);
+        inventoryService.addNewProduct(productThree);
 
         List<Product> laptops = inventoryService.searchProductsByName("laptop");
         assertEquals(2, laptops.size());
-        assertTrue(laptops.stream().anyMatch(p -> p.getId().equals(p1.getId())));
-        assertTrue(laptops.stream().anyMatch(p -> p.getId().equals(p2.getId())));
+        assertTrue(laptops.stream().anyMatch(p -> p.getId().equals(productOne.getId())));
+        assertTrue(laptops.stream().anyMatch(p -> p.getId().equals(productTwo.getId())));
     }
 
     @Test
     @DisplayName("Should search products by category correctly")
     void shouldSearchProductsByCategoryCorrectly() throws InvalidProductException {
-        Product p1 = new Product("Laptop", ProductCategory.Electronics, 5, 1200.00);
-        Product p2 = new Product("Bread", ProductCategory.Grocery, 8, 2.50);
-        Product p3 = new Product("Shirt", ProductCategory.Clothing, 2, 25.00);
+        Product productOne = new Product("Laptop", ProductCategory.Electronics, 5, 1200.00);
+        Product productTwo = new Product("Bread", ProductCategory.Grocery, 8, 2.50);
+        Product productThree = new Product("Shirt", ProductCategory.Clothing, 2, 25.00);
 
-        inventoryService.addNewProduct(p1);
-        inventoryService.addNewProduct(p2);
-        inventoryService.addNewProduct(p3);
+        inventoryService.addNewProduct(productOne);
+        inventoryService.addNewProduct(productTwo);
+        inventoryService.addNewProduct(productThree);
 
         List<Product> electronics = inventoryService.searchProductsByCategory(ProductCategory.Electronics);
         assertEquals(1, electronics.size());
-        assertEquals(p1.getId(), electronics.get(0).getId());
+        assertEquals(productOne.getId(), electronics.get(0).getId());
     }
 
     // Additional test for InvalidProductException from Product constructor

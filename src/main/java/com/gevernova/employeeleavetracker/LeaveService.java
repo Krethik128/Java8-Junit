@@ -28,11 +28,6 @@ public class LeaveService {
 
     /**
      * Applies leave for a specific employee.
-     * @param employeeId The ID of the employee.
-     * @param leave The leave to apply.
-     * @throws RuntimeException If the employee is not found.
-     * @throws LeaveLimitExceededException If leave limit is exceeded.
-     * @throws InvalidLeaveDateException If leave dates are invalid/overlapping.
      */
     public void applyLeave(String employeeId, Leave leave) // Removed LeavePolicy parameter
             throws LeaveLimitExceededException, InvalidLeaveDateException, RuntimeException {
@@ -46,8 +41,6 @@ public class LeaveService {
     /**
      * Gets employees whose remaining leave balance is less than a specified threshold.
      * Uses Java 8 Stream to filter employees.
-     * @param threshold The balance threshold.
-     * @return A list of employees with low leave balance.
      */
     public List<Employee> getEmployeesWithLowLeaveBalance(long threshold) {
         if (threshold < 0) {

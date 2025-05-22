@@ -61,9 +61,6 @@ public class Employee {
 
     /**
      * Applies for a new leave.
-     * @param leave The leave object to apply.
-     * @throws LeaveLimitExceededException If the leave exceeds the remaining balance.
-     * @throws InvalidLeaveDateException If the leave dates overlap with existing leaves.
      */
     public void applyForLeave(Leave leave) throws LeaveLimitExceededException, InvalidLeaveDateException {
         // Check for leave balance

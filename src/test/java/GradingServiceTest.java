@@ -107,11 +107,11 @@ class GradingServiceTest {
         Student student = new Student("Alice", "A001", Arrays.asList(80, 90, 70));
         assertEquals(80.0, gradingService.calculateAverage(student), 0.001);
 
-        Student student2 = new Student("Bob", "B001", Arrays.asList(100, 100, 100));
-        assertEquals(100.0, gradingService.calculateAverage(student2), 0.001);
+        Student studentTwo = new Student("Bob", "B001", Arrays.asList(100, 100, 100));
+        assertEquals(100.0, gradingService.calculateAverage(studentTwo), 0.001);
 
-        Student student3 = new Student("Charlie", "C001", Arrays.asList(50, 50));
-        assertEquals(50.0, gradingService.calculateAverage(student3), 0.001);
+        Student studentThree = new Student("Charlie", "C001", Arrays.asList(50, 50));
+        assertEquals(50.0, gradingService.calculateAverage(studentThree), 0.001);
     }
 
     @Test

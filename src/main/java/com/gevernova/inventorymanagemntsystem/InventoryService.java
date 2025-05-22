@@ -23,8 +23,6 @@ public class InventoryService {
     // --- CRUD Operations ---
     /**
      * Adds a new product or updates the quantity if the product already exists.
-     * @param product The product to add.
-     * @throws InvalidProductException If product details are invalid (e.g., negative quantity, price).
      */
     public void addOrUpdateProduct(Product product) throws InvalidProductException {
         // This product.getId() will be a NEW UUID for each new Product object
@@ -50,9 +48,6 @@ public class InventoryService {
     /**
      * Adds a brand-new product to the inventory.
      * This method assumes the product being added has a unique ID (UUID generated in its constructor).
-     *
-     * @param product The product to add.
-     * @throws InvalidProductException If product details are invalid (e.g., negative quantity, price).
      * (Note: most of this validation is now in the Product constructor itself).
      */
     public void addNewProduct(Product product) throws InvalidProductException {
@@ -65,8 +60,6 @@ public class InventoryService {
 
     /**
      * Removes a product from the inventory.
-     * @param productId The ID of the product to remove.
-     * @throws ProductNotFoundException If the product does not exist.
      */
     public void removeProduct(String productId) throws ProductNotFoundException {
         inventoryRepository.removeProduct(productId);
@@ -86,10 +79,6 @@ public class InventoryService {
     }
     /**
      * Decreases the quantity of a product.
-     * @param productId The ID of the product.
-     * @param quantityToDecrease The amount to decrease.
-     * @throws ProductNotFoundException If the product does not exist.
-     * @throws InvalidProductException If the quantity to decrease is negative or results in negative stock.
      */
     public void decreaseProductQuantity(String productId, int quantityToDecrease) throws ProductNotFoundException, InvalidProductException {
         if (quantityToDecrease < 0) {
@@ -110,8 +99,6 @@ public class InventoryService {
 
     /**
      * Searches for products by name (case-insensitive, partial match).
-     * @param name The name to search for.
-     * @return A list of matching products.
      */
     public List<Product> searchProductsByName(String name) {
         return inventoryRepository.findAllProducts().stream()
@@ -121,8 +108,6 @@ public class InventoryService {
 
     /**
      * Searches for products by category.
-     * @param category The category to search for.
-     * @return A list of matching products.
      */
     public List<Product> searchProductsByCategory(ProductCategory category) {
         return inventoryRepository.findAllProducts().stream()
@@ -132,8 +117,6 @@ public class InventoryService {
 
     /**
      * Filters products with quantity less than the specified threshold.
-     * @param threshold The quantity threshold.
-     * @return A list of low-stock products.
      */
     public List<Product> filterLowStockItems(int threshold) {
         if (threshold < 0) {

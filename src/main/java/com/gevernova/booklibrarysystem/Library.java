@@ -1,7 +1,5 @@
 package com.gevernova.booklibrarysystem;
 
-// src/main/java/com/library/Library.java
-
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -36,11 +34,6 @@ public class Library {
 
     /**
      * Allows a user to borrow a book.
-     * @param userId The ID of the user.
-     * @param bookId The ID of the book.
-     * @throws BookUnavailableException If the book is not found or already borrowed.
-     * @throws BookLimitExceededException If the user has reached their borrowing limit.
-     * @throws IllegalArgumentException If user or book is not found.
      */
     public void borrowBook(String userId, String bookId) throws BookUnavailableException, BookLimitExceededException {
         User user = Optional.ofNullable(users.get(userId))
@@ -62,9 +55,6 @@ public class Library {
 
     /**
      * Allows a user to return a book.
-     * @param userId The ID of the user.
-     * @param bookId The ID of the book.
-     * @throws IllegalArgumentException If user or book is not found, or if the user did not borrow this book.
      */
     public void returnBook(String userId, String bookId) {
         User user = Optional.ofNullable(users.get(userId))
@@ -106,8 +96,6 @@ public class Library {
 
     /**
      * Filters books by author (case-insensitive, partial match).
-     * @param author The author's name to search for.
-     * @return A list of books by the specified author.
      */
     public List<Book> findBooksByAuthor(String author) {
         if (author == null) return new ArrayList<>();
@@ -118,8 +106,6 @@ public class Library {
 
     /**
      * Filters books by genre (case-insensitive, partial match).
-     * @param genre The genre to search for.
-     * @return A list of books in the specified genre.
      */
     public List<Book> findBooksByGenre(String genre) {
         if (genre == null) return new ArrayList<>();
@@ -130,8 +116,6 @@ public class Library {
 
     /**
      * Finds a book by its ID using Optional.
-     * @param bookId The ID of the book.
-     * @return An Optional containing the book if found, or empty if not.
      */
     public Optional<Book> findBookById(String bookId) {
         return Optional.ofNullable(books.get(bookId));
@@ -139,8 +123,6 @@ public class Library {
 
     /**
      * Finds a user by their ID using Optional.
-     * @param userId The ID of the user.
-     * @return An Optional containing the user if found, or empty if not.
      */
     public Optional<User> findUserById(String userId) {
         return Optional.ofNullable(users.get(userId));

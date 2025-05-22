@@ -1,6 +1,6 @@
 # Java8-Junit
 
-This repository contains a collection of Java 8 projects, each focusing on different aspects of modern Java development, including object-oriented design, functional programming with Streams and Optional, and robust testing with JUnit 5.
+This repository contains a collection of Java 8 Problem statements, each focusing on different aspects of modern Java development, including object-oriented design, functional programming with Streams and Optional, and robust testing with JUnit 5.
 
 Each project is designed to tackle a common software engineering problem, demonstrating best practices in exception handling, data management, and test-driven development.
 
